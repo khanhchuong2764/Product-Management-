@@ -1,0 +1,18 @@
+mixin pagination(ObjectPagination)
+    nav 
+        ul(class="pagination" ulpagination)
+            li(class=`page-item`)
+                    button(class="page-link" button-pagi=1) <span aria-hidden="true">«</span>
+            if (ObjectPagination.currentPage > 1)
+                li(class=`page-item`)
+                    button(class="page-link" button-pagi=ObjectPagination.currentPage-1) <span aria-hidden="true">&laquo;</span>
+            - for (let i = ObjectPagination.currentPage -2; i <= ObjectPagination.currentPage +2 ; i ++)
+                if (i >= 1)
+                    if (i <= ObjectPagination.totalPage)
+                        li(class=`page-item ${ObjectPagination.currentPage == i ?"active":""}`)
+                            button(class="page-link" button-pagi= i) #{i}
+            if (ObjectPagination.currentPage < ObjectPagination.totalPage)
+                li(class=`page-item`)
+                    button(class="page-link" button-pagi=ObjectPagination.currentPage+1) <span aria-hidden="true">&raquo;</span>
+            li(class=`page-item`)
+                    button(class="page-link" button-pagi=ObjectPagination.totalPage) <span aria-hidden="true">&raquo;</span>

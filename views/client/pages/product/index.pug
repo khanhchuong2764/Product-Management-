@@ -1,0 +1,22 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+block main
+    .container.my-3
+        .row
+            .col-12
+                +boxhead("Danh Sach San Pham")
+        .row
+            .product-list
+                each item in record
+                    .product-item
+                        .inner-images
+                            img(src=item.thumbnail, alt=item.title)
+                        .inner-content 
+                            h3.inner-title 
+                                a(href=`/product/${item.slug}`) #{item.title}
+                            .price
+                                .inner-price-new #{item.newprice}$ 
+                                .inner-price-old #{item.price}$
+                                .discount #{item.discountPercentage}%
+            
+                            
