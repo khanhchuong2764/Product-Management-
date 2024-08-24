@@ -4,17 +4,8 @@ const router = express.Router();
 
 const multer  = require('multer');
 
-const cloudinary = require('cloudinary').v2
-
-const streamifier = require('streamifier')
-
 const fileUpload  = multer();
 
-cloudinary.config({ 
-    cloud_name: 'dewvzrqlt', 
-    api_key: '547491939699499', 
-    api_secret: '7S1klq8kOXuLFpUnW9R-RW0mnF4'
-});
 
 const UploadCloud = require("../../middleware/admin/uploadCloud.middleware");
 
@@ -41,3 +32,5 @@ router.patch('/edit/:id',fileUpload.single('thumbnail'),UploadCloud.upload,Valid
 router.get('/detail/:id',controller.detail);
 
 module.exports = router;
+
+    
