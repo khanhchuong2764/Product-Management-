@@ -34,7 +34,7 @@ block main
         div(class="mb-4") Vị Trí: <b>#{product.posittion}</b>
 
     if (product.description) 
-        div(class="mb-4") Mô Tả: #{product.description}
+        div(class="mb-4") Mô Tả: !{product.description}
     
     a(class="btn btn-warning btn-sm" href=`${prefixAdmin}/product/edit/${product.id}`) Chỉnh Sửa 
 

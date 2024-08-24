@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path');
 const methodOverride = require('method-override')
 const flash = require('express-flash')
 const multer  = require('multer')
@@ -18,6 +19,11 @@ app.use(cookieParser('keyboard cat'));
 app.use(session({ cookie: { maxAge: 60000 }}));
 app.use(flash());
 //End Flash
+
+// TimyMce
+app.use('/tinymce', express.static(path.join(__dirname, 'node_modules', 'tinymce')));
+
+//End TimyMCE
 
 app.use(bodyParser.urlencoded({ extended: false }))
 

@@ -158,3 +158,34 @@ if (buttonStatus.length > 0) {
     
 
 //Previews Image Upload
+
+
+// Sort
+    const sort = document.querySelector("[sort]");
+    if (sort) {
+        let url = new URL(window.location.href);
+        const selectSort = sort.querySelector("[sort-select]");
+        const btnClear = sort.querySelector("[sort-clear]");
+        selectSort.addEventListener("change", (e) => {
+            const Value = e.target.value;
+            const [sortKey,sortValue] = Value.split("-");
+            url.searchParams.set("sortKey",sortKey);
+            url.searchParams.set("sortValue",sortValue);
+            window.location.href = url.href;
+        })
+        btnClear.addEventListener("click", () => {
+            url.searchParams.delete("sortKey");
+            url.searchParams.delete("sortValue");
+            window.location.href = url.href;
+        })
+        const sortkey = url.searchParams.get("sortKey");
+        const sortvalue = url.searchParams.get("sortValue");
+        if (sortkey && sortvalue) {
+            const stringsort = `${sortkey}-${sortvalue}`;
+            const optionSelected = selectSort.querySelector(`option[value=${stringsort}]`);
+            optionSelected.selected = true;
+        }
+    }
+
+    
+//End Sort

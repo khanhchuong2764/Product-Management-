@@ -34,7 +34,17 @@ module.exports.index = async (req, res) => {
         countRecord
     )
     // End Pagination
-    const record =await Product.find(find).sort({posittion:"desc"}).limit(ObjectPagination.limititem).skip(ObjectPagination.skip);
+
+    // Sort 
+     const sort = {};
+     if (req.query.sortKey && req.query.sortValue) {
+        sort[req.query.sortKey] = req.query.sortValue;
+     }else {
+        sort.posittion = "desc";
+     }
+
+    //End Sort
+    const record =await Product.find(find).sort(sort).limit(ObjectPagination.limititem).skip(ObjectPagination.skip);
     res.render("admin/pages/product/index",{
         pageTitle:"Trang Danh Sach San Pham",
         record:record,

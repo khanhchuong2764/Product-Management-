@@ -98,3 +98,6 @@
 .button-hidden {
     display: none;
 }
+.select-sort {
+    width: 200px;
+}

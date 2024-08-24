@@ -4,6 +4,7 @@ include ../../mixins/search.pug
 include ../../mixins/pagination.pug
 include ../../mixins/formchangemulti.pug
 include ../../mixins/alert.pug
+include ../../mixins/sort.pug
 block main 
     +alerterror(5000)
     +alertsuccess(5000)
@@ -16,6 +17,13 @@ block main
                     +fillterStatus(FillterStatus)
                 .col-3
                     +formsearch(keyword)
+
+    .card.mb-3
+        .card-header Sắp Xếp
+        .card-body     
+            .row 
+                .col-3
+                     +sort()
 
     .card.mb-3
         .card-header Danh Sách
