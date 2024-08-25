@@ -18,6 +18,11 @@ router.get('/create',controller.create);
 
 router.post('/create',fileUpload.single('thumbnail'),UploadCloud.upload,ValidateProductCategory.createPost,controller.createPost);
 
+router.patch('/change-status/:status/:id',controller.ChangeStatus);
+
+
+router.delete('/delete/:id',controller.deleteItem);
+
 module.exports = router;
 
     
