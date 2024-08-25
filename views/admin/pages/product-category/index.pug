@@ -1,0 +1,45 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+block main 
+    +alertsuccess(5000)
+    h1(class="mb-4") Danh Mục Sản Phẩm
+
+    .card.mb-3
+        .card-header Danh Sách
+            .card-body
+                .row
+                    .col-8
+                    .col-4
+                         a(href=`${prefixAdmin}/product-category/create` class="btn btn-outline-success") +Thêm Mới
+                       
+                table(class="table table-hover" checkbox-multi)
+                    thead
+                        tr  
+                            th
+                                input(type="checkbox" name="checkall")
+                            th STT
+                            th Hình Ảnh
+                            th Tiêu Đề
+                            th Vị Trí
+                            th Trạng Thái
+                            th Hành Động
+                    tbody 
+                        each item,index in records
+                            tr  
+                                td
+                                    input(type="checkbox" name="id" value=item.id)
+                                td #{index + 1}
+                                td
+                                    img(src=item.thumbnail, width="120px" height="auto" alt=item.title)
+                                td #{item.title}
+                                td 
+                                    input(type="number" min="1" name="position" style="width:60px" value=item.posittion)
+                                td 
+                                    if (item.status == "active")
+                                        a(href="#" class="badge badge-success" button-change-status data-id=item.id data-status=item.status ) Hoạt Động
+                                    else
+                                        a(href="#" class="badge badge-danger"  button-change-status data-id=item.id data-status=item.status  ) Dừng Hoạt Động
+                                td  
+                                    a(class="btn btn-secondary btn-sm btn-detail" href=`${prefixAdmin}/product-category/detail/${item.id}`) Chi Tiết
+                                    a(class="btn btn-warning btn-sm" href=`${prefixAdmin}/product-category/edit/${item.id}`) Sửa
+                                    button(class="btn btn-danger btn-sm ml-1" button-delete data-id= item.id ) Xóa

@@ -129,7 +129,7 @@ module.exports.createPost = async (req, res) => {
         req.body.posittion = parseInt(req.body.posittion);
     }
     const product =new Product(req.body);
-    product.save();
+    await product.save();
     req.flash('success', `Thêm Mới Sản Phẩm Thành Công`);
     res.redirect(`${Systemconfig.prefixAdmin}/product`);
 }
