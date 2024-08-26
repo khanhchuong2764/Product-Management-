@@ -1,4 +1,5 @@
 extends ../../layouts/default.pug
+include ../../mixins/select-tree.pug
 block main 
     h1(class="mb-4") Thêm Mới Danh Mục Sản Phẩm
     form(
@@ -14,7 +15,10 @@ block main
             textarea(name="description" id="desc" class="form-control textarea-timymce" rows ="5")
         div(class="form-group")
             label(for="parent_id") Danh Mục Cha
-            input(type="text" id="parent_id" name="parentID" class="form-control")
+            select(name="parentID" class="form-control" id="parent_id")
+                option(value="" selected) --Chọn Danh Mục--
+                if (records) 
+                     +selecttree(records)
         div(class="form-group" uploads-image)
             label(for="thumbnail") Ảnh
             input(type="file" id="thumbnail" name="thumbnail" class="form-control-file" accept="image/*" uploads-image-input) 

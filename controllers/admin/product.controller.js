@@ -150,7 +150,6 @@ module.exports.edit = async (req, res) => {
         res.redirect(`${Systemconfig.prefixAdmin}/product`);
     }
 }
-
 // [PATCH] /admin/product/edit/:id
 module.exports.editPatch = async (req, res) => {
     try {
@@ -175,7 +174,6 @@ module.exports.editPatch = async (req, res) => {
         res.redirect(`back`);
     }
 }
-
 // [GET] /admin/product/detail/:id
 module.exports.detail = async (req, res) => {
     try {
